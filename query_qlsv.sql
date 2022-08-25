@@ -10,8 +10,36 @@ SET SQL_SAFE_UPDATES = 0;
 update  student set classId =2  where studentName = 'Hung';
 -- Hiển thị các thông tin: StudentName, SubName, Mark. 
 -- Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
-select s.StudentId , s.StudentName, sub.subName, m.Mark 
-from student s 
+select s.StudentId , s.StudentName, sub.subName, m.Mark from student s 
 join Mark m on  s.StudentId = m.StudentId 
 join subjects sub on sub.SubId = m.subId 
 order by M.mark DESC, s.studentName ASC;
+
+-- hiển thị số lượng sinh viên ở từng nơi
+select Address, count(StudentId) as 'Số lượng học viên'from Student
+group by Address;
+
+
+-- tính điểm trung bình các môn học của mỗi học viên
+select  s.studentId, s.studentName, avg(Mark)
+from student s join mark m on s.studentId = m.StudentId
+group by s.StudentId, s.StudentName;
+-- Hiển thị những bạn học viên co điểm trung bình các môn học lớn hơn 15 Đầu tiên hiển thị điểm trung bình các môn học của mỗi học viên
+SELECT S.StudentId,S.StudentName, AVG(Mark)
+FROM Student S join Mark M on S.StudentId = M.StudentId
+GROUP BY S.StudentId, S.StudentName;
+-- Sử dụng having để xét điều kiện điểm trung bình các môn học phải lớn hơn 15
+select s.StudentId, s.StudentName, avg(mark)
+from student s join mark m on s.StudentId = m.StudentId
+group by s.StudentId, s.StudentName
+having avg(mark)> 15;
+-- Hiển thị danh sách điểm trung bình của các học viên
+select s.studentId, s.studentName, avg(mark)
+from student s join mark m on s.StudentId = m.StudentId
+group by s.StudentId, s.StudentName;
+-- Sử dụng Having và All để tìm học viên có điểm trung bình lớn nhất
+select s.studentId, s.studentName, avg(mark)
+from student s join mark m on s.StudentId = m.StudentId
+group by s.StudentId, s.StudentName
+having avg(mark)>= all (select avg(mark) from mark group by mark.StudentId)
+
