@@ -43,3 +43,19 @@ from student s join mark m on s.StudentId = m.StudentId
 group by s.StudentId, s.StudentName
 having avg(mark)>= all (select avg(mark) from mark group by mark.StudentId)
 
+
+## Hiển thị tất cả các thông tin môn học có credit lớn nhất
+select SubId, subName, max(Credit)
+from subjects
+group by subId, subName
+having max(Credit)>= all(select max(Credit) from subjects);
+
+-- Hiển thị các thông tin môn học có điểm thi lớn nhất.
+select * from mark 
+group by mark
+having mark >= all(select Mark from mark);
+
+-- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần
+select* , avg(mark)
+from student s join mark m on s.StudentId = m.StudentId
+group by s.StudentId, s.StudentName order by mark desc;
