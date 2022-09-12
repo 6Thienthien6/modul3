@@ -1,3 +1,5 @@
+package servertime;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-@WebServlet(name = "ServerTime", urlPatterns = "/index")
+@WebServlet(name = "servertime.ServerTime", urlPatterns = "/index")
 public class ServerTime extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
