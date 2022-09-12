@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Currency Converter</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<h2>Currency Converter</h2>
+<form method="post" action="/convert">
+    <label>rate: </label><br/>
+    <input type="text" name="rate" placeholder="RATE" value="23000"/><br/>
+    <label>USD: </label><br/>
+    <input type="text" name="usd" placeholder="USD" value="0"/><br/>
+    <input type="submit" id="submit" value = "converter"/>
+</form>
 </body>
 </html>
