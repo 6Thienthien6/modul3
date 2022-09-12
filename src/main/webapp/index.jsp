@@ -9,6 +9,9 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="/dictionary.jsp">Hello Servlet</a>
+<a href="/dictionary.jsp">Go to dictionary</a><br>
+<a href="/discount.jsp">Go to ProductDiscountCalculator</a>
+
+
 </body>
 </html>
